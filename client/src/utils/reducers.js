@@ -17,8 +17,17 @@ import {
               ...state,
               categories: [...action.categories]
             };
-      // if it's none of these actions, do not update state at all and keep things the same!
+            case UPDATE_CURRENT_CATEGORY:
+              return {
+                ...state,
+                currentCategory: action.currentCategory
+              }
       default:
         return state;
     }
   };
+
+
+export function useProductReducer(initialState) {
+  return useReducer(reducer, initialState)
+}
